@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'requestmanager'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2015-11-01'
   s.summary     = 'Manages scraper http requests'
   s.description = 'Manages proxies, wait intervals, etc'

@@ -23,7 +23,9 @@ class RequestManager
       element.send_keys form_input
       element.submit
     end
-    
+
+    # Sleep while things load then save
+    sleep(7)
     page_html = driver.page_source
     driver.quit
     return page_html
