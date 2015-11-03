@@ -80,7 +80,7 @@ class RequestManager
 
     # Handle form input if there is any
     if form_input
-      element = driver.find_element(name: "q")
+      element = browser.find_element(name: "q")
       element.send_keys form_input
       element.submit
     end
