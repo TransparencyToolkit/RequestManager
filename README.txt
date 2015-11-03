@@ -5,5 +5,6 @@ To install-
 gem install requestmanager
 
 To run-
-r = RequestManager.new(path/to/proxylist, [min wait, max wait])
+r = RequestManager.new(path/to/proxylist, [min wait, max wait], # of browsers
+to use)
 r.get_page(url, form input (if any))
