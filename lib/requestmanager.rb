@@ -26,6 +26,11 @@ class RequestManager
     @browsers[chosen_proxy] = [gen_driver(chosen_proxy), Time.now]
   end
 
+  # Get the html on the page now
+  def get_updated_current_page
+    return get_most_recent_browser[1][0].page_source
+  end
+
   # Get the most recently used browser
   def get_most_recent_browser
     most_recent = @browsers.first
@@ -111,8 +116,7 @@ class RequestManager
   # Choose a random proxy that hasn't been used recently
   def get_random_proxy
     max = @proxy_list.length
-    chosen = @proxy_list[Random.rand(max)]
-    chosen_proxy = chosen[0]+":"+chosen[1]
+    chosen_proxy = @proxy_list[Random.rand(max)]
     
     # Only use proxy if it hasn't been used in last n seconds on same host
     if !@used_proxies.include?(chosen_proxy)
@@ -127,7 +131,7 @@ class RequestManager
   # Parse the proxy list
   def parse_proxy_list(proxy_file)
     if proxy_file
-      return IO.readlines(proxy_file).map{ |proxy| proxy.strip.split(":")}
+      return IO.readlines(proxy_file).map{ |proxy| proxy.strip }
     end
   end
 end
